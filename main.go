@@ -1,17 +1,23 @@
 package main
 
 import (
-	"fmt"
-
+	"github.com/RodrigoWebD3v/goPortunities/config"
 	"github.com/RodrigoWebD3v/goPortunities/router"
 )
 
+//Initialize configs
 
-func init(){
-	fmt.Printf("Initializing server...")
-}
-
+var (
+	logger config.Logger
+)
 
 func main() {
+	logger = *config.GetLogger("main")
+	err := config.Init() 
+	if err != nil {
+		logger.Errorf("config initialization error: %v", err)
+		return
+	}
+
 	router.Initialize()
 }
