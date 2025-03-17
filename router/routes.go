@@ -33,5 +33,11 @@ func initializeRoutes(r *gin.Engine) {
 				"msg": "PUT Opening",
 			})
 		})
+
+		v1.GET("/openings", func(ctx *gin.Context) {
+			ctx.JSON(http.StatusOK, gin.H{
+				"msg": "GET Opening",
+			})
+		})
 	}
 }
